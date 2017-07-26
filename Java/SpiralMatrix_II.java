@@ -8,10 +8,10 @@ public class Solution {
         int r = 0;  // current row
         int c = 0;  // current col
         
-        int minR = 0;  // Edge of row
-        int maxR = n - 1;  // Edge of row
-        int minC = 0;  // Edge of col
-        int maxC = n - 1;  // Edge of col
+        int minR = 0;  // Upper edge
+        int maxR = n - 1;  // Bottom edge
+        int minC = 0;  // Left edge
+        int maxC = n - 1;  // Right edge
         
         int num = 1;  // accumulator from 1 to n^2
         
@@ -29,19 +29,19 @@ public class Solution {
                 // If reaches right edge
                 if (c > maxC) {
                     d = 'D';  // Change direction to Down
-                    minR++;  // min edge of row++
-                    c = maxC;  // col is at its max edge
+                    minR++;  // Upper edge++
+                    c = maxC;  // col is at right edge
                     r++;  // move row
                 }
             }
             // If direction is Down
             else if (d == 'D') {
                 r++;
-                // If reaches down edge
+                // If reaches bottom edge
                 if (r > maxR) {
                     d = 'L';  // Change direction to Left
-                    maxC--;  // max edge of col--
-                    r = maxR;  // row is at its max edge
+                    maxC--;  // Right edge--
+                    r = maxR;  // row is at bottom edge
                     c--;  // move col
                 }
             }
@@ -51,8 +51,8 @@ public class Solution {
                 // If reaches left edge
                 if (c < minC) {
                     d = 'U';  // Change direction to Up
-                    maxR--;  // max edge of row--
-                    c = minC;  // col is at its min edge
+                    maxR--;  // Bottom edge--
+                    c = minC;  // col is at left edge
                     r--;  // move row
                 }
             }
@@ -62,8 +62,8 @@ public class Solution {
                 // If reaches up edge
                 if (r < minR) {
                     d = 'R';  // change direction to Right
-                    minC++;  // min edge of col++
-                    r = minR;  // row is at its min edge
+                    minC++;  // Left edge++
+                    r = minR;  // row is at upper edge
                     c++;  // move col
                 }
             }
